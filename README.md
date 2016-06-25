@@ -34,4 +34,4 @@ Just like _HOOK_MESSAGE, use `_HOOK_FUNCTION` (instead of `HOOK_FUNCTION`) to cr
 
 #Sample
 
-	[HttPeek](https://github.com/Yonsm/HttPeek)
+See [HttPeek](https://github.com/Yonsm/HttPeek)
