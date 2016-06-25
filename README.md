@@ -6,9 +6,9 @@ A light weight hook utility for iOS.
 
 #Usage
 
-#import "HookUtil.h"
+	#import "HookUtil.h"
 
-##Hook a Object C Message
+###Hook a Object C Message
 
 	HOOK_MESSAGE(BOOL, UIApplication, openURL_, NSURL *URL)
 	{
@@ -20,18 +20,18 @@ The above code block will create a `automatically-initialized hook function` (wi
 
 Use `_HOOK_MESSAGE` (instead of `HOOK_MESSAGE`) to create a `manually-initialized hook function`. You must call `_Init_openURL_()` if you want to enable it.
 
-##Hook a C/C++ function
+###Hook a C/C++ function
 
-	HOOK_FUNCTION(CFReadStreamRef, /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation, CFReadStreamCreateForHTTPRequest, CFAllocatorRef alloc, CFHTTPMessageRef request)
+	HOOK_FUNCTION(OSStatus, /System/Library/Frameworks/Security.framework/Security, SSLHandshake, SSLContextRef context)
 	{
-		NSLog(@"%s: %p", __FUNCTION__, request);
-		return _CFReadStreamCreateForHTTPRequest(alloc, request);
+		OSStatus ret = _SSLHandshake(context);
+	    return (ret == errSSLServerAuthCompleted) ? _SSLHandshake(context) : ret;
 	}
 
-Just like _HOOK_MESSAGE, use `_HOOK_FUNCTION` (instead of `HOOK_FUNCTION`) to create a `manually-initialized hook function`. You must call `_Init_CFReadStreamCreateForHTTPRequest()` if you want to enable it.
+Just like _HOOK_MESSAGE, use `_HOOK_FUNCTION` (instead of `HOOK_FUNCTION`) to create a `manually-initialized hook function`. You must call `_Init_SSLHandshake()` if you want to enable it.
 
 `HOOK_FUNCTION` and `_HOOK_FUNCTION` can be used only on a jail-broken device with `Cydia Substrate` installed.
 
 #Sample
 
-[HttPeek](https://github.com/Yonsm/HttPeek)
+	[HttPeek](https://github.com/Yonsm/HttPeek)
