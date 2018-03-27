@@ -1,5 +1,7 @@
 
+
 #import <stdlib.h>
+#import <stdio.h>
 #import "HookUtil.h"
 
 // Rewrite fishhook from FaceBook
@@ -7,7 +9,18 @@
 #import <mach-o/dyld.h>
 #import <mach-o/nlist.h>
 
-#ifdef __LP64__
+#include <CoreFoundation/CoreFoundation.h>
+void NSLog(CFStringRef format, ...);
+
+#ifndef _Log
+#if defined(DEBUG) || defined(TEST)
+#define _Log(s, ...)	NSLog(s, ##__VA_ARGS__)
+#else
+#define _Log(s, ...)	((void) 0)
+#endif
+#endif
+
+#if defined(_MAC64) || defined(__LP64__)
 typedef struct mach_header_64 mach_header_t;
 typedef struct segment_command_64 segment_command_t;
 typedef struct section_64 section_t;
@@ -189,7 +202,7 @@ bool MSHookFunction(void *symbol, void *hook, void **old)
 	if (_MSHookFunction == NULL)
 	{
 		_MSHookFunction = dlsym(dlopen("/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate", RTLD_LAZY), "MSHookFunction");
-		_Log(@"HookUtil: _MSHookFunction = %p", _MSHookFunction);
+		_Log(CFSTR("HookUtil: _MSHookFunction = %p"), _MSHookFunction);
 		if (_MSHookFunction == NULL)
 		{
 			_MSHookFunction = (void *)-1;
@@ -214,7 +227,7 @@ bool MSHookMessage(Class cls, SEL sel, IMP hook, IMP *old)
 	if (_MSHookMessageEx == nil)
 	{
 		_MSHookMessageEx = dlsym(dlopen("/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate", RTLD_LAZY), "MSHookMessageEx");
-		_Log(@"HookUtil: _MSHookMessageEx = %p", _MSHookMessageEx);
+		_Log(CFSTR("HookUtil: _MSHookMessageEx = %p"), _MSHookMessageEx);
 		if (_MSHookMessageEx == NULL)
 		{
 			_MSHookMessageEx = (void *)-1;
@@ -280,7 +293,7 @@ void HUHookFunction(const char *lib, const char *func, void *hook, void **old)
 }
 
 //
-void HUHookMessage(Class cls, const char *name, IMP hook, IMP *old)
+void HUHookMessage(const char *cls, bool meta, const char *name, IMP hook, IMP *old)
 {
 	char msg[1024], *p = msg;
 	do
@@ -289,16 +302,17 @@ void HUHookMessage(Class cls, const char *name, IMP hook, IMP *old)
 	}
 	while (*name++);
 	SEL sel = sel_registerName(msg);
+	Class class = meta ? objc_getMetaClass(cls) : objc_getClass(cls);
 	
 #ifdef _Support_CydiaSubstrate
-	if (MSHookMessage(cls, sel, hook, old)) return;
+	if (MSHookMessage(class, sel, hook, old)) return;
 #endif
 	
 	//
-	Method method = class_getInstanceMethod(cls, sel);
+	Method method = class_getInstanceMethod(class, sel);
 	if (method == NULL)
 	{
-		_Log(@"HookUtil: Could not find [%@ %s]", cls, sel_getName(sel));
+		_Log(CFSTR("HookUtil: Could not find [%s %s]"), cls, sel_getName(sel));
 	}
 	else
 	{
@@ -355,10 +369,10 @@ void HUHookFunctionForProcess(const char *proc, const char *lib, const char *fun
 }
 
 //
-void HUHookMessageForProcess(const char *proc, Class cls, const char *name, IMP hook, IMP *old)
+void HUHookMessageForProcess(const char *proc, const char *cls, bool meta, const char *name, IMP hook, IMP *old)
 {
 	if (HUIsAnyOneMatched(proc, getprogname(), '|'))
 	{
-		HUHookMessage(cls, name, hook, old);
+		HUHookMessage(cls, meta, name, hook, old);
 	}
 }
