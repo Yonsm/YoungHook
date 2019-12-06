@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8425EAB1239660740072E30D /* YoungHookCamo.c in Sources */ = {isa = PBXBuildFile; fileRef = 8425EAB0239660740072E30D /* YoungHookCamo.c */; };
+		8421C239239A41FD00009FC1 /* YoungHook.c in Sources */ = {isa = PBXBuildFile; fileRef = 8421C232239A41FD00009FC1 /* YoungHook.c */; };
+		8421C23A239A41FD00009FC1 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 8421C233239A41FD00009FC1 /* fishhook.c */; };
+		8421C23B239A41FD00009FC1 /* CamoCall.c in Sources */ = {isa = PBXBuildFile; fileRef = 8421C235239A41FD00009FC1 /* CamoCall.c */; };
 		8442EE6B2394F4850021F5F8 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8442EE6A2394F4850021F5F8 /* AppDelegate.mm */; };
 		8442EE6E2394F4850021F5F8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442EE6D2394F4850021F5F8 /* SceneDelegate.m */; };
 		8442EE712394F4850021F5F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442EE702394F4850021F5F8 /* ViewController.m */; };
@@ -15,14 +17,17 @@
 		8442EE762394F4860021F5F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8442EE752394F4860021F5F8 /* Assets.xcassets */; };
 		8442EE792394F4860021F5F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8442EE772394F4860021F5F8 /* LaunchScreen.storyboard */; };
 		8442EE7C2394F4860021F5F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442EE7B2394F4860021F5F8 /* main.m */; };
-		8442EE852394F5120021F5F8 /* YoungHook.c in Sources */ = {isa = PBXBuildFile; fileRef = 8442EE832394F5120021F5F8 /* YoungHook.c */; };
 		8442EE88239503350021F5F8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8442EE87239503350021F5F8 /* WebKit.framework */; };
-		8442EE8B2395154C0021F5F8 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 8442EE8A2395154C0021F5F8 /* fishhook.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8425EAAE2396528B0072E30D /* YoungHookCamo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YoungHookCamo.h; path = ../../YoungHookCamo.h; sourceTree = "<group>"; };
-		8425EAB0239660740072E30D /* YoungHookCamo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = YoungHookCamo.c; path = ../../YoungHookCamo.c; sourceTree = "<group>"; };
+		8421C22F239A41FD00009FC1 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = ../../fishhook.h; sourceTree = "<group>"; };
+		8421C232239A41FD00009FC1 /* YoungHook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = YoungHook.c; path = ../../YoungHook.c; sourceTree = "<group>"; };
+		8421C233239A41FD00009FC1 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishhook.c; path = ../../fishhook.c; sourceTree = "<group>"; };
+		8421C234239A41FD00009FC1 /* YoungHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YoungHook.h; path = ../../YoungHook.h; sourceTree = "<group>"; };
+		8421C235239A41FD00009FC1 /* CamoCall.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = CamoCall.c; path = ../../CamoCall.c; sourceTree = "<group>"; };
+		8421C236239A41FD00009FC1 /* CamoString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CamoString.h; path = ../../CamoString.h; sourceTree = "<group>"; };
+		8421C23C239A4B8F00009FC1 /* CamoCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CamoCall.h; path = ../../CamoCall.h; sourceTree = "<group>"; };
 		8442EE662394F4850021F5F8 /* YoungHookDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoungHookDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8442EE692394F4850021F5F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8442EE6A2394F4850021F5F8 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -35,11 +40,7 @@
 		8442EE782394F4860021F5F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8442EE7A2394F4860021F5F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8442EE7B2394F4860021F5F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8442EE832394F5120021F5F8 /* YoungHook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = YoungHook.c; path = ../../YoungHook.c; sourceTree = "<group>"; };
-		8442EE842394F5120021F5F8 /* YoungHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YoungHook.h; path = ../../YoungHook.h; sourceTree = "<group>"; };
 		8442EE87239503350021F5F8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		8442EE892395154C0021F5F8 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = ../../fishhook.h; sourceTree = "<group>"; };
-		8442EE8A2395154C0021F5F8 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishhook.c; path = ../../fishhook.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +55,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8421C22D239A41EF00009FC1 /* YoungHook */ = {
+			isa = PBXGroup;
+			children = (
+				8421C233239A41FD00009FC1 /* fishhook.c */,
+				8421C22F239A41FD00009FC1 /* fishhook.h */,
+				8421C235239A41FD00009FC1 /* CamoCall.c */,
+				8421C23C239A4B8F00009FC1 /* CamoCall.h */,
+				8421C236239A41FD00009FC1 /* CamoString.h */,
+				8421C232239A41FD00009FC1 /* YoungHook.c */,
+				8421C234239A41FD00009FC1 /* YoungHook.h */,
+			);
+			path = YoungHook;
+			sourceTree = "<group>";
+		};
 		8442EE5D2394F4850021F5F8 = {
 			isa = PBXGroup;
 			children = (
-				8442EE822394F5020021F5F8 /* YoungHook */,
+				8421C22D239A41EF00009FC1 /* YoungHook */,
 				8442EE682394F4850021F5F8 /* YoungHookDemo */,
 				8442EE672394F4850021F5F8 /* Products */,
 				8442EE86239503350021F5F8 /* Frameworks */,
@@ -88,19 +103,6 @@
 				8442EE7B2394F4860021F5F8 /* main.m */,
 			);
 			path = YoungHookDemo;
-			sourceTree = "<group>";
-		};
-		8442EE822394F5020021F5F8 /* YoungHook */ = {
-			isa = PBXGroup;
-			children = (
-				8442EE8A2395154C0021F5F8 /* fishhook.c */,
-				8442EE892395154C0021F5F8 /* fishhook.h */,
-				8442EE832394F5120021F5F8 /* YoungHook.c */,
-				8442EE842394F5120021F5F8 /* YoungHook.h */,
-				8425EAAE2396528B0072E30D /* YoungHookCamo.h */,
-				8425EAB0239660740072E30D /* YoungHookCamo.c */,
-			);
-			path = YoungHook;
 			sourceTree = "<group>";
 		};
 		8442EE86239503350021F5F8 /* Frameworks */ = {
@@ -181,12 +183,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8442EE852394F5120021F5F8 /* YoungHook.c in Sources */,
 				8442EE712394F4850021F5F8 /* ViewController.m in Sources */,
+				8421C23A239A41FD00009FC1 /* fishhook.c in Sources */,
+				8421C239239A41FD00009FC1 /* YoungHook.c in Sources */,
+				8421C23B239A41FD00009FC1 /* CamoCall.c in Sources */,
 				8442EE6B2394F4850021F5F8 /* AppDelegate.mm in Sources */,
-				8425EAB1239660740072E30D /* YoungHookCamo.c in Sources */,
 				8442EE7C2394F4860021F5F8 /* main.m in Sources */,
-				8442EE8B2395154C0021F5F8 /* fishhook.c in Sources */,
 				8442EE6E2394F4850021F5F8 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

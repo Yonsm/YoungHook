@@ -6,7 +6,8 @@
 //  Copyright © 2019 Yonsm. All rights reserved.
 
 #import "AppDelegate.h"
-#import "YoungHookCamo.h"
+#import "CamoString.h"
+#import "CamoCall.h"
 
 @interface AppDelegate ()
 
@@ -14,12 +15,12 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-	NSLog(@"%@", CFBridgingRelease(
-								   CamoCallClassMessage("NSString", "stringWithCString:encoding:", "XXXX", NSUTF8StringEncoding)
-	));
+
+//	NSLog(@"%@: %s", CFBridgingRelease(
+//								   CamoCallClassMessage("NSString", "stringWithCString:encoding:", "XXXX", NSUTF8StringEncoding)
+//	), "\x30");
     return YES;
 }
 

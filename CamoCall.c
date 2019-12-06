@@ -1,5 +1,5 @@
 
-#import "YoungHookCamo.h"
+#import "CamoCall.h"
 #import <dlfcn.h>
 
 void *(*Camo_objc_msgSend)(id, SEL, ...) = NULL;
@@ -20,17 +20,4 @@ void CamoCallInit()
 	Camo_class_getInstanceMethod = dlsym(dlopen("/usr/lib/libobjc.A.dylib", RTLD_LAZY), "class_getInstanceMethod");
 	Camo_sel_registerName = dlsym(dlopen("/usr/lib/libobjc.A.dylib", RTLD_LAZY), "sel_registerName");
 	Camo_method_setImplementation = dlsym(dlopen("/usr/lib/libobjc.A.dylib", RTLD_LAZY), "method_setImplementation");
-}
-
-const char *CamoStringDecrypt(CamoString *string)
-{
-	if (string->encrypt)
-	{
-		for (short i = string->length - 1; i >= 0; i--)
-		{
-			string->payload[i] = (string->payload[i] + i) ^ string->length;
-		}
-		string->encrypt = 0;
-	}
-	return string->payload;
 }

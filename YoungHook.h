@@ -4,10 +4,11 @@
 //#define _Support_CydiaSubstrate
 //#define _Support_FishHook
 //#define _Support_MultiProcess
-#define _Support_CamoCall
+//#define _Support_CamoCall
 
 #ifdef _Support_CamoCall
-#import "YoungHookCamo.h"
+#import "CamoCall.h"
+#import "CamoString.h"
 #define _objc_getClass				Camo_objc_getClass
 #define _objc_getMetaClass			Camo_objc_getMetaClass
 #define _class_getInstanceMethod	Camo_class_getInstanceMethod

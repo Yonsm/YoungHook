@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-	CamoCallInit();
+	//CamoCallInit();
 
 	WKProcessPool *pool = [[WKProcessPool alloc]  init];
 	WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
@@ -43,11 +43,11 @@
 	//[NSClassFromString(@"WKBrowsingContextController") registerSchemeForCustomProtocol:@"https"];
 	NSString *a = [objc_getClass("NSString") stringWithCString:"XXX" encoding:NSUTF8StringEncoding];
 	
-	NSString *b = CFBridgingRelease(
-	CamoCallClassMessage("NSString", "stringWithCString:encoding:", "XXXX", NSUTF8StringEncoding)
-									);
+	//NSString *b = CFBridgingRelease(
+	//CamoCallClassMessage("NSString", "stringWithCString:encoding:", "XXXX", NSUTF8StringEncoding)
+	//								);
 	
-	NSLog(@"%@-%@", a, b);
+	//NSLog(@"%@-%@", a, b);
 	//[WKWebView handlesURLScheme:[NSString stringWithCString:CamoDecrypt((__bridge CamoData *) webView) encoding:NSUTF8StringEncoding]];
 	//YHMsgSend(WKWebView, handlesURLScheme_, 
 	//objc_msgSend(WKWebView);
