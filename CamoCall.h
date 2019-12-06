@@ -12,6 +12,7 @@ void CamoDecryptCString(char *dst, const char *src, signed length)
 	{
 		dst[i] = (src[i] + i) ^ length;
 	}
+	dst[length] = 0;
 }
 
 extern void CamoCallInit(void);

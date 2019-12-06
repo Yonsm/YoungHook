@@ -9,48 +9,7 @@
 #import "ViewController.h"
 #import <WebKit/WebKit.h>
 #import "YoungHook.h"
-
-@interface ViewController ()
-
-@end
-
-@interface WKWebView ()
-- (id)browsingContextController;
-@end
-
-@interface NSObject (WKBrowsingContextControllerMethods)
-+ (void)registerSchemeForCustomProtocol:(NSString *)scheme;
-@end
-
-@implementation ViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
-	CamoCallInit();
-
-	WKProcessPool *pool = [[WKProcessPool alloc]  init];
-	WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-	config.processPool = pool;
-	WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
-	webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[webView loadHTMLString:@"<html><body>Loading...</body></html>" baseURL:[NSURL URLWithString:@"https://www.apple.com"]];
-	//[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.apple.com"]]];
-	[self.view addSubview:webView];
-	
-	//id browsingContextController = [webView browsingContextController];
-	//[NSClassFromString(@"WKBrowsingContextController") registerSchemeForCustomProtocol:@"https"];
-
-	// DEMO1
-	NSLog(@"%@", CamoCallClassMessage("NSString", "stringWithCString:encoding:", "XXXX", NSUTF8StringEncoding));
-
-	//[WKWebView handlesURLScheme:[NSString stringWithCString:CamoDecrypt((__bridge CamoData *) webView) encoding:NSUTF8StringEncoding]];
-	//YHMsgSend(WKWebView, handlesURLScheme_, 
-	//objc_msgSend(WKWebView);
-}
-
-@end
+#import "YoungHookDemoCamo.h"
 
 // https://github.com/WebKit/webkit/blob/39a299616172a4d4fe1f7aaf573b41020a1d7358/Source/WebKit/UIProcess/API/Cocoa/WKWebView.mm#L1869
 _HOOK_MESSAGE(void, WKWebView, __layerTreeCommitComplete)
@@ -65,4 +24,35 @@ _HOOK_CLASS(BOOL, WKWebView, handlesURLScheme_, NSString *urlScheme)
 	return _WKWebView_handlesURLScheme_(self, sel, urlScheme);
 }
 
+@implementation ViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+
+	WKProcessPool *pool = [[WKProcessPool alloc]  init];
+	WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+	config.processPool = pool;
+	WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+	webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	[webView loadHTMLString:@"<html><body>Loading...</body></html>" baseURL:[NSURL URLWithString:@"https://www.apple.com"]];
+	//[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.apple.com"]]];
+	[self.view addSubview:webView];
+	
+	//id browsingContextController = [webView browsingContextController];
+	//[NSClassFromString(@"WKBrowsingContextController") registerSchemeForCustomProtocol:@"https"];
+
+	CamoCallInit();
+	_Init_WKWebView_handlesURLScheme_();
+	_Init_WKWebView___layerTreeCommitComplete();
+
+	// DEMO1
+	CAMO_NSString; CAMO_stringWithCString_encoding; CAMO_XXXX;
+	NSLog(@"%@", CamoCallClassMessage(camo_NSString, camo_stringWithCString_encoding, camo_XXXX, NSUTF8StringEncoding));
+
+	//[WKWebView handlesURLScheme:[NSString stringWithCString:CamoDecrypt((__bridge CamoData *) webView) encoding:NSUTF8StringEncoding]];
+	//YHMsgSend(WKWebView, handlesURLScheme_, 
+	//objc_msgSend(WKWebView);
+}
+
+@end

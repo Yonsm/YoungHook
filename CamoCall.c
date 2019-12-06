@@ -44,4 +44,5 @@ void CamoCallInit()
 	Camo_class_getInstanceMethod = dlsym(lib, camo_class_getInstanceMethod);
 	Camo_sel_registerName = dlsym(lib, camo_sel_registerName);
 	Camo_method_setImplementation = dlsym(lib, camo_method_setImplementation);
+	
 }

@@ -27,6 +27,7 @@
 		8421C234239A41FD00009FC1 /* YoungHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YoungHook.h; path = ../../YoungHook.h; sourceTree = "<group>"; };
 		8421C235239A41FD00009FC1 /* CamoCall.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = CamoCall.c; path = ../../CamoCall.c; sourceTree = "<group>"; };
 		8421C23C239A4B8F00009FC1 /* CamoCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CamoCall.h; path = ../../CamoCall.h; sourceTree = "<group>"; };
+		8421C23D239A5A3300009FC1 /* YoungHookDemoCamo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YoungHookDemoCamo.h; sourceTree = "<group>"; };
 		8442EE662394F4850021F5F8 /* YoungHookDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoungHookDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8442EE692394F4850021F5F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8442EE6A2394F4850021F5F8 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 		8442EE682394F4850021F5F8 /* YoungHookDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8421C23D239A5A3300009FC1 /* YoungHookDemoCamo.h */,
 				8442EE692394F4850021F5F8 /* AppDelegate.h */,
 				8442EE6A2394F4850021F5F8 /* AppDelegate.mm */,
 				8442EE6C2394F4850021F5F8 /* SceneDelegate.h */,
