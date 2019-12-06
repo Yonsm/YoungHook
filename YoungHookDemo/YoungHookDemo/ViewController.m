@@ -35,8 +35,8 @@ _HOOK_CLASS(BOOL, WKWebView, handlesURLScheme_, NSString *urlScheme)
 	config.processPool = pool;
 	WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
 	webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[webView loadHTMLString:@"<html><body>Loading...</body></html>" baseURL:[NSURL URLWithString:@"https://www.apple.com"]];
-	//[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.apple.com"]]];
+	//[webView loadHTMLString:@"<html><body>Loading...</body></html>" baseURL:[NSURL URLWithString:CAMO_https_www_apple_com]];
+	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:CAMO_https_www_apple_com]]];
 	[self.view addSubview:webView];
 	
 	//id browsingContextController = [webView browsingContextController];
