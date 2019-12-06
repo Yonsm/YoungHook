@@ -1,5 +1,7 @@
 
 #import "CamoCall.h"
+
+#ifdef CamoCall_FunctionPointer
 #import <dlfcn.h>
 
 // /usr/lib/libobjc.A.dylib
@@ -46,3 +48,5 @@ void CamoCallInit()
 	Camo_method_setImplementation = dlsym(lib, camo_method_setImplementation);
 	
 }
+#endif
+
