@@ -1,26 +1,10 @@
 
 #import <objc/runtime.h>
-
-//#define _Support_CydiaSubstrate
-//#define _Support_FishHook
-//#define _Support_MultiProcess
-//#define _Support_CamoCall
-
-#ifdef _Support_CamoCall
 #import "CamoCall.h"
-#import "CamoString.h"
-#define _objc_getClass				Camo_objc_getClass
-#define _objc_getMetaClass			Camo_objc_getMetaClass
-#define _class_getInstanceMethod	Camo_class_getInstanceMethod
-#define _sel_registerName			Camo_sel_registerName
-#define _method_setImplementation	Camo_method_setImplementation
-#else
-#define _objc_getClass				objc_getClass
-#define _objc_getMetaClass			objc_getMetaClass
-#define _class_getInstanceMethod	class_getInstanceMethod
-#define _sel_registerName			sel_registerName
-#define _method_setImplementation	method_setImplementation
-#endif
+
+#define _Support_CydiaSubstrate
+#define _Support_FishHook
+#define _Support_MultiProcess
 
 //
 #ifdef __cplusplus

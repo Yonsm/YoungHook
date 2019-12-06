@@ -26,7 +26,6 @@
 		8421C233239A41FD00009FC1 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishhook.c; path = ../../fishhook.c; sourceTree = "<group>"; };
 		8421C234239A41FD00009FC1 /* YoungHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YoungHook.h; path = ../../YoungHook.h; sourceTree = "<group>"; };
 		8421C235239A41FD00009FC1 /* CamoCall.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = CamoCall.c; path = ../../CamoCall.c; sourceTree = "<group>"; };
-		8421C236239A41FD00009FC1 /* CamoString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CamoString.h; path = ../../CamoString.h; sourceTree = "<group>"; };
 		8421C23C239A4B8F00009FC1 /* CamoCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CamoCall.h; path = ../../CamoCall.h; sourceTree = "<group>"; };
 		8442EE662394F4850021F5F8 /* YoungHookDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoungHookDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8442EE692394F4850021F5F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,7 +61,6 @@
 				8421C22F239A41FD00009FC1 /* fishhook.h */,
 				8421C235239A41FD00009FC1 /* CamoCall.c */,
 				8421C23C239A4B8F00009FC1 /* CamoCall.h */,
-				8421C236239A41FD00009FC1 /* CamoString.h */,
 				8421C232239A41FD00009FC1 /* YoungHook.c */,
 				8421C234239A41FD00009FC1 /* YoungHook.h */,
 			);

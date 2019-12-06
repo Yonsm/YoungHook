@@ -5,6 +5,15 @@ extern "C"
 {
 #endif
 
+static __inline__ __attribute__((always_inline))
+void CamoDecryptCString(char *dst, const char *src, signed length)
+{
+	for (signed i = 0; i < length; i++)
+	{
+		dst[i] = (src[i] + i) ^ length;
+	}
+}
+
 extern void CamoCallInit(void);
 extern void *(*Camo_objc_msgSend)(id, SEL, ...);
 extern Class (*Camo_objc_getClass)(const char *);
