@@ -2,6 +2,7 @@
 
 #import <stdlib.h>
 #import <stdio.h>
+#import <dlfcn.h>
 #import "HookUtil.h"
 
 // Rewrite fishhook from FaceBook
@@ -195,7 +196,6 @@ int FHRebindSymbols(struct FHRebinding rebindings[], size_t count)
 
 //
 #ifdef _Support_CydiaSubstrate
-#import <dlfcn.h>
 bool MSHookFunction(void *symbol, void *hook, void **old)
 {
 	static void (*_MSHookFunction)(void *symbol, void *hook, void **old) = NULL;
