@@ -1,6 +1,5 @@
-
+.DS_Store
+Extras
 *.xcuserdatad
 *.xcworkspace
-Extras
-
-.DS_Store
+xcshareddata
