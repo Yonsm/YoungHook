@@ -6,7 +6,7 @@
 //  Copyright © 2019 Yonsm. All rights reserved.
 
 #import "AppDelegate.h"
-#import "CamoCall.h"
+//#import "CamoCall.h"
 
 @interface AppDelegate ()
 

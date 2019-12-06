@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-	//CamoCallInit();
+	CamoCallInit();
 
 	WKProcessPool *pool = [[WKProcessPool alloc]  init];
 	WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
@@ -41,13 +41,10 @@
 	
 	//id browsingContextController = [webView browsingContextController];
 	//[NSClassFromString(@"WKBrowsingContextController") registerSchemeForCustomProtocol:@"https"];
-	NSString *a = [objc_getClass("NSString") stringWithCString:"XXX" encoding:NSUTF8StringEncoding];
-	
-	//NSString *b = CFBridgingRelease(
-	//CamoCallClassMessage("NSString", "stringWithCString:encoding:", "XXXX", NSUTF8StringEncoding)
-	//								);
-	
-	//NSLog(@"%@-%@", a, b);
+
+	// DEMO1
+	NSLog(@"%@", CamoCallClassMessage("NSString", "stringWithCString:encoding:", "XXXX", NSUTF8StringEncoding));
+
 	//[WKWebView handlesURLScheme:[NSString stringWithCString:CamoDecrypt((__bridge CamoData *) webView) encoding:NSUTF8StringEncoding]];
 	//YHMsgSend(WKWebView, handlesURLScheme_, 
 	//objc_msgSend(WKWebView);
@@ -56,7 +53,7 @@
 @end
 
 // https://github.com/WebKit/webkit/blob/39a299616172a4d4fe1f7aaf573b41020a1d7358/Source/WebKit/UIProcess/API/Cocoa/WKWebView.mm#L1869
-HOOK_MESSAGE(void, WKWebView, __layerTreeCommitComplete)
+_HOOK_MESSAGE(void, WKWebView, __layerTreeCommitComplete)
 {
 	NSLog(@"%s, %@", __FUNCTION__, self);
 	_WKWebView___layerTreeCommitComplete(self, sel);

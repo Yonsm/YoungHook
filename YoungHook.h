@@ -2,9 +2,10 @@
 #import <objc/runtime.h>
 #import "CamoCall.h"
 
-#define _Support_CydiaSubstrate
-#define _Support_FishHook
-#define _Support_MultiProcess
+//#define YoungHook_AutoInit
+//#define YoungHook_CydiaSubstrate
+//#define YoungHook_FishHook
+//#define YoungHook_MultiProcess
 
 //
 #ifdef __cplusplus
@@ -12,13 +13,13 @@ extern "C"
 {
 #endif
 
-#if defined(_Support_CydiaSubstrate) || defined(_Support_FishHook)
+#if defined(YoungHook_CydiaSubstrate) || defined(YoungHook_FishHook)
 bool YHHookFunction(const char *lib, const char *func, void *hook, void **old);
 #endif
 bool YHHookMessage(const char * cls, bool meta, const char *name, IMP hook, IMP *old);	// Name means ObjC message, use '_' for ':', '__' for '_'
 
-#ifdef _Support_MultiProcess
-#if defined(_Support_CydiaSubstrate) || defined(_Support_FishHook)
+#ifdef YoungHook_MultiProcess
+#if defined(YoungHook_CydiaSubstrate) || defined(YoungHook_FishHook)
 bool YHHookFunctionForProcess(const char *proc, const char *lib, const char *func, void *hook, void **old);
 #endif
 bool YHHookMessageForProcess(const char *proc, const char * cls, bool meta, const char *name, IMP hook, IMP *old);
@@ -54,6 +55,7 @@ bool YHHookMessageForProcess(const char *proc, const char * cls, bool meta, cons
 #define _HOOK_MESSAGE(RET, CLS, MSG, ...)					__HOOK_MESSAGE(always_inline, __YHHookMessage, , RET, CLS, MSG, false, ##__VA_ARGS__)
 #define _HOOK_CLASS(RET, CLS, MSG, ...)						__HOOK_MESSAGE(always_inline, __YHHookMessage, , RET, CLS, MSG, true, ##__VA_ARGS__)
 
+#ifdef YoungHook_AutoInit
 // Automatic hook
 #define HOOK_FUNCTION(RET, LIB, FUN, ...)					__HOOK_FUNCTION(constructor, __YHHookFunction, , RET, LIB, FUN, ##__VA_ARGS__)
 #define HOOK_MESSAGE(RET, CLS, MSG, ...)					__HOOK_MESSAGE(constructor, __YHHookMessage, , RET, CLS, MSG, false, ##__VA_ARGS__)
@@ -61,8 +63,9 @@ bool YHHookMessageForProcess(const char *proc, const char * cls, bool meta, cons
 
 // Automatic hook for special process name
 // Use | separator for multiple process name
-#ifdef _Support_MultiProcess
+#ifdef YoungHook_MultiProcess
 #define HOOK_FUNCTION_FOR_PROCESS(PROC, RET, LIB, FUN, ...)	__HOOK_FUNCTION(constructor, YHHookFunctionForProcess, PROC, RET, LIB, FUN, ##__VA_ARGS__)
 #define HOOK_MESSAGE_FOR_PROCESS(PROC, RET, CLS, MSG, ...)	__HOOK_MESSAGE(constructor, YHHookMessageForProcess, PROC, RET, CLS, MSG, false, ##__VA_ARGS__)
 #define HOOK_CLASS_FOR_PROCESS(PROC, RET, CLS, MSG, ...)	__HOOK_MESSAGE(constructor, YHHookMessageForProcess, PROC, RET, CLS, MSG, true, ##__VA_ARGS__)
+#endif
 #endif

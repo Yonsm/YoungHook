@@ -24,7 +24,7 @@ void NSLog(CFStringRef format, ...);
 #define CAMO_MSHookFunction char camo_MSHookFunction[15]; CamoDecryptCString(camo_MSHookFunction, "\x43\x5e\x44\x64\x65\x62\x4e\x72\x68\x66\x70\x6a\x6d\x6f", 14)
 
 //
-#ifdef _Support_CydiaSubstrate
+#ifdef YoungHook_CydiaSubstrate
 bool MSHookFunction(void *symbol, void *hook, void **old)
 {
 	static void (*_MSHookFunction)(void *symbol, void *hook, void **old) = NULL;
@@ -79,18 +79,18 @@ bool MSHookMessage(Class cls, SEL sel, IMP hook, IMP *old)
 }
 #endif
 
-#if defined(_Support_CydiaSubstrate) || defined(_Support_FishHook)
-#ifdef _Support_FishHook
+#if defined(YoungHook_CydiaSubstrate) || defined(YoungHook_FishHook)
+#ifdef YoungHook_FishHook
 #import "fishhook.h"
 #endif
 bool YHHookFunction(const char *lib, const char *func, void *hook, void **old)
 {
-#ifdef _Support_CydiaSubstrate
+#ifdef YoungHook_CydiaSubstrate
 	if (MSHookFunction(dlsym(dlopen(lib, RTLD_LAZY), func), hook, old))
 		return true;
 #endif
 
-#ifdef _Support_FishHook
+#ifdef YoungHook_FishHook
 	return rebind_symbols((struct rebinding[1]){{func, hook, old}}, 1);
 #else
 	return false;
@@ -101,11 +101,11 @@ bool YHHookFunction(const char *lib, const char *func, void *hook, void **old)
 //
 bool YHHookMessage(const char *cls, bool meta, const char *name, IMP hook, IMP *old)
 {
-#ifdef _Support_CamoCall
-	if (_sel_registerName == NULL)
+#ifdef YoungHook_AutoInit
+	if (Camo_sel_registerName == NULL)
 		CamoCallInit();
 #endif
-	
+
 	char msg[1024], *p = msg;
 	do
 	{
@@ -115,7 +115,7 @@ bool YHHookMessage(const char *cls, bool meta, const char *name, IMP hook, IMP *
 	SEL sel = Camo_sel_registerName(msg);
 	Class class = meta ? Camo_objc_getMetaClass(cls) : Camo_objc_getClass(cls);
 
-#ifdef _Support_CydiaSubstrate
+#ifdef YoungHook_CydiaSubstrate
 	if (MSHookMessage(class, sel, hook, old))
 		return true;
 #endif
@@ -133,7 +133,7 @@ bool YHHookMessage(const char *cls, bool meta, const char *name, IMP hook, IMP *
 }
 
 //
-#ifdef _Support_MultiProcess
+#ifdef YoungHook_MultiProcess
 bool YHIsAnyOneMatched(const char *any, const char *one, char separator)
 {
 	for (const char *p = one; true; any++)
@@ -172,7 +172,7 @@ bool YHIsAnyOneMatched(const char *any, const char *one, char separator)
 }
 
 //
-#if defined(_Support_CydiaSubstrate) || defined(_Support_FishHook)
+#if defined(YoungHook_CydiaSubstrate) || defined(YoungHook_FishHook)
 bool YHHookFunctionForProcess(const char *proc, const char *lib, const char *func, void *hook, void **old)
 {
 	if (YHIsAnyOneMatched(proc, getprogname(), '|'))
