@@ -6,11 +6,11 @@ extern "C"
 #endif
 
 static __inline__ __attribute__((always_inline))
-void CamoDecryptCString(char *dst, const char *src, signed length)
+void CamoDecryptCString(char *dst, const char *src, unsigned length)
 {
-	for (signed i = 0; i < length; i++)
+	for (unsigned i = 0; i < length; i++)
 	{
-		dst[i] = (src[i] + i) ^ length;
+		dst[i] = ((unsigned char)src[i] + i) ^ (unsigned char)length;
 	}
 	dst[length] = 0;
 }
