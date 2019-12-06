@@ -17,11 +17,11 @@ void NSLog(CFStringRef format, ...);
 #endif
 
 // /Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate
-#define CAMO_Library_Frameworks_CydiaSubstrate_framework_CydiaSubstrate char camo_Library_Frameworks_CydiaSubstrate_framework_CydiaSubstrate[60]; CamoDecryptCString(camo_Library_Frameworks_CydiaSubstrate_framework_CydiaSubstrate, "\x14\x76\x50\x56\x45\x55\x43\x3b\x0c\x74\x3f\x4f\x4a\x51\x3e\x45\x39\x3f\x36\x01\x64\x2d\x49\x3b\x42\x4f\x34\x3e\x2c\x32\x2b\x3b\x2f\x3d\xfffffff3\x3a\x25\x35\x30\x37\x24\x2b\x1f\x25\xffffffe8\x4b\x14\x30\x22\x29\x36\x1b\x25\x13\x19\x12\x22\x16\x24", 59)
+#define CAMO_Library_Frameworks_CydiaSubstrate_framework_CydiaSubstrate char camo_Library_Frameworks_CydiaSubstrate_framework_CydiaSubstrate[60]; CamoStringDecode(camo_Library_Frameworks_CydiaSubstrate_framework_CydiaSubstrate, "\x14\x76\x50\x56\x45\x55\x43\x3b\x0c\x74\x3f\x4f\x4a\x51\x3e\x45\x39\x3f\x36\x01\x64\x2d\x49\x3b\x42\x4f\x34\x3e\x2c\x32\x2b\x3b\x2f\x3d\xfffffff3\x3a\x25\x35\x30\x37\x24\x2b\x1f\x25\xffffffe8\x4b\x14\x30\x22\x29\x36\x1b\x25\x13\x19\x12\x22\x16\x24", 59)
 // MSHookMessageEx
-#define CAMO_MSHookMessageEx char camo_MSHookMessageEx[16]; CamoDecryptCString(camo_MSHookMessageEx, "\x42\x5b\x45\x5d\x5c\x5f\x3c\x63\x74\x73\x64\x5d\x5e\x3d\x69", 15)
+#define CAMO_MSHookMessageEx char camo_MSHookMessageEx[16]; CamoStringDecode(camo_MSHookMessageEx, "\x42\x5b\x45\x5d\x5c\x5f\x3c\x63\x74\x73\x64\x5d\x5e\x3d\x69", 15)
 // MSHookFunction
-#define CAMO_MSHookFunction char camo_MSHookFunction[15]; CamoDecryptCString(camo_MSHookFunction, "\x43\x5c\x44\x5e\x5d\x60\x42\x74\x58\x64\x70\x5c\x55\x53", 14)
+#define CAMO_MSHookFunction char camo_MSHookFunction[15]; CamoStringDecode(camo_MSHookFunction, "\x43\x5c\x44\x5e\x5d\x60\x42\x74\x58\x64\x70\x5c\x55\x53", 14)
 
 //
 #ifdef YoungHook_CydiaSubstrate

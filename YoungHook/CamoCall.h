@@ -1,4 +1,5 @@
 #import <objc/runtime.h>
+#import <CoreFoundation/CoreFoundation.h>
 
 #ifdef __cplusplus
 extern "C"
@@ -6,13 +7,21 @@ extern "C"
 #endif
 
 static __inline__ __attribute__((always_inline))
-void CamoDecryptCString(char *dst, const char *src, unsigned length)
+void CamoStringDecode(char *dst, const char *src, unsigned length)
 {
 	for (unsigned i = 0; i < length; i++)
 	{
 		dst[i] = ((unsigned char)src[i] + i) ^ (unsigned char)length;
 	}
 	dst[length] = 0;
+}
+
+static __inline__ __attribute__((always_inline))
+CFStringRef CamoStringDecode2(const char *src, unsigned length)
+{
+	char dst[2048];
+	CamoStringDecode(dst, src, length);
+	return CFStringCreateWithCString(NULL, dst, kCFStringEncodingUTF8);
 }
 
 #ifdef CamoCall_FunctionPointer
